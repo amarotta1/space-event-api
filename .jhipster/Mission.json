@@ -1,0 +1,33 @@
+{
+  "name": "Mission",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "spaceShip",
+      "otherEntityRelationshipName": "mission",
+      "relationshipName": "spaceShip",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "mission",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["space"],
+  "changelogDate": "20211202161352"
+}

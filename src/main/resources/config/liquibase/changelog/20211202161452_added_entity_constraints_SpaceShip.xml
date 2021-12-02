@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+    <!--
+        Added the constraints for entity SpaceShip.
+    -->
+    <changeSet id="20211202161452-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="manufacturer_id"
+                                 baseTableName="space_ship"
+                                 constraintName="fk_space_ship__manufacturer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="manufacturer"/>
+
+        <addForeignKeyConstraint baseColumnNames="space_ship_id"
+                                 baseTableName="rel_space_ship__mission"
+                                 constraintName="fk_rel_space_ship__mission__space_ship_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="space_ship"/>
+
+        <addForeignKeyConstraint baseColumnNames="mission_id"
+                                 baseTableName="rel_space_ship__mission"
+                                 constraintName="fk_rel_space_ship__mission__mission_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="mission"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,27 @@
+{
+  "spaceApp": {
+    "spaceShip": {
+      "home": {
+        "title": "Space Ships",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Space Ship",
+        "createOrEditLabel": "Crear o editar Space Ship",
+        "notFound": "Ningún Space Ships encontrado"
+      },
+      "created": "Un nuevo Space Ship ha sido creado con el identificador {{ param }}",
+      "updated": "Un Space Ship ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Space Ship ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Space Ship {{ id }}?"
+      },
+      "detail": {
+        "title": "Space Ship"
+      },
+      "id": "ID",
+      "name": "Name",
+      "type": "Type",
+      "manufacturer": "Manufacturer",
+      "mission": "Mission"
+    }
+  }
+}

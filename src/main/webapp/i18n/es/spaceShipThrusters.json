@@ -1,0 +1,10 @@
+{
+  "spaceApp": {
+    "SpaceShipThrusters": {
+      "null": "",
+      "ION": "ION",
+      "CHEMICAL": "CHEMICAL",
+      "PLASMA": "PLASMA"
+    }
+  }
+}

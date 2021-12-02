@@ -1,0 +1,71 @@
+application { 
+  config {
+    baseName space
+    applicationType monolith
+    serverPort 8081
+    packageName ar.edu.um.isa.space
+    serviceDiscoveryType eureka
+    testFrameworks [cypress]
+    authenticationType jwt
+    databaseType sql
+    prodDatabaseType mysql
+    devDatabaseType mysql
+    buildTool maven
+    clientFramework react
+    languages [en, es]
+    nativeLanguage es
+  }
+  dto * with mapstruct
+  entities *
+}
+
+entity SpaceEvent {
+  name String required
+  date LocalDate required
+  description String required
+  photo ImageBlob required
+  type SpaceEventType required
+}
+
+entity Mission {
+  name String required
+  description String
+}
+
+enum SpaceEventType {
+  LAUNCH,
+  LANDING
+}
+
+enum SpaceShipType {
+  MANNED,
+  NONMANNED
+}
+
+enum SpaceShipThrusters{
+    ION,
+    CHEMICAL,
+    PLASMA
+}
+
+entity SpaceShip{
+    name String required
+    type SpaceShipType required
+    type SpaceShipThrusters required
+}
+
+entity Manufacturer{
+    name String required
+}
+
+relationship OneToOne {
+  SpaceEvent{mission(name)} to Mission
+}
+
+relationship ManyToOne {
+  SpaceShip{manufacturer} to Manufacturer  
+}
+
+relationship ManyToMany {
+  SpaceShip{mission} to Mission{spaceShip}
+}

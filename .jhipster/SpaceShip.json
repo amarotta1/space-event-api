@@ -1,0 +1,41 @@
+{
+  "name": "SpaceShip",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "type",
+      "fieldType": "SpaceShipThrusters",
+      "fieldValues": "ION,CHEMICAL,PLASMA",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "many-to-one",
+      "otherEntityName": "manufacturer",
+      "otherEntityRelationshipName": "spaceShip",
+      "relationshipName": "manufacturer"
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "mission",
+      "otherEntityRelationshipName": "spaceShip",
+      "relationshipName": "mission",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "space_ship",
+  "dto": "mapstruct",
+  "pagination": "no",
+  "service": "serviceClass",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": ["space"],
+  "changelogDate": "20211202161452"
+}
