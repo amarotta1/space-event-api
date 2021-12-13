@@ -96,7 +96,7 @@ Cypress.Commands.add('login', (username: string, password: string) => {
 });
 
 Cypress.Commands.add('loginAPI', () => {
-  var userData = { username: 'admin', password: 'admin', rememberMe: true };
+  const userData = { username: 'admin', password: 'admin', rememberMe: true };
   cy.request({
     method: 'POST',
     url: 'http://localhost:8081/api/authenticate',
