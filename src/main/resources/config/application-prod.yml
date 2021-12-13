@@ -23,8 +23,10 @@ eureka:
   instance:
     prefer-ip-address: true
   client:
+    registerWithEureka: false
+    fetchRegistry: false
     service-url:
-      defaultZone: http://admin:${jhipster.registry.password}@localhost:8761/eureka/
+      defaultZone: http://admin:${jhipster.registry.password}@localhost:8081/eureka/
 
 management:
   metrics:
@@ -52,9 +54,9 @@ spring:
       # it can be set to any label, branch or commit of the configuration source Git repository
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3306/space?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
+    url: jdbc:mysql://localhost:3306/space?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
     username: root
-    password:
+    password: admin
     hikari:
       poolName: Hikari
       auto-commit: false
@@ -127,6 +129,14 @@ jhipster:
       max-entries: 1000 # Number of objects in each cache entry
   registry:
     password: admin
+  cors:
+    # Allow Ionic for JHipster by default (* no longer allowed in Spring Boot 2.4+)
+    allowed-origins: 'http://localhost:8100,https://localhost:8100,http://localhost:9000,https://localhost:9000,http://localhost:9060,https://localhost:9060,http://localhost:8100,http://localhost:3000'
+    allowed-methods: '*'
+    allowed-headers: '*'
+    exposed-headers: 'Authorization,Link,X-Total-Count,X-${jhipster.clientApp.name}-alert,X-${jhipster.clientApp.name}-error,X-${jhipster.clientApp.name}-params'
+    allow-credentials: true
+    max-age: 1800
   security:
     authentication:
       jwt:

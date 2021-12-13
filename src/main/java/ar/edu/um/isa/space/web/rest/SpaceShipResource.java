@@ -172,4 +172,11 @@ public class SpaceShipResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    //------------------------------------------
+    @GetMapping("/space-ships/mission/{id}")
+    public List<SpaceShipDTO> getAllSpaceShipsByMission(@PathVariable Long id) {
+        log.debug("REST request to get all SpaceShips by mission");
+        return spaceShipService.findAllByMission(id);
+    }
 }

@@ -171,4 +171,19 @@ public class SpaceEventResource {
             .headers(HeaderUtil.createEntityDeletionAlert(applicationName, true, ENTITY_NAME, id.toString()))
             .build();
     }
+
+    //--------------------------------------------------------------
+
+    /**
+     * {@code GET  /space-events/spaceShip/:id} : get all spaceEvent by "id" spaceShip.
+     *
+     * @param id
+     * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the spaceEventDTO, or with status {@code 404 (Not Found)}.
+     */
+    @GetMapping("/space-events/mission/{id}")
+    public ResponseEntity<SpaceEventDTO> getSpaceEventByMission(@PathVariable Long id) {
+        log.debug("REST request to get SpaceEvent by Mission : {}", id);
+        Optional<SpaceEventDTO> spaceEventDTO = spaceEventService.findByMission(id);
+        return ResponseUtil.wrapOrNotFound(spaceEventDTO);
+    }
 }

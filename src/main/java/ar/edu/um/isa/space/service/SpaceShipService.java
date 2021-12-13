@@ -111,4 +111,20 @@ public class SpaceShipService {
         log.debug("Request to delete SpaceShip : {}", id);
         spaceShipRepository.deleteById(id);
     }
+
+    //----------------------------------------
+    /**
+     * Get all the spaceShips by Mission.
+     *
+     * @return the list of entities.
+     */
+    @Transactional(readOnly = true)
+    public List<SpaceShipDTO> findAllByMission(Long id) {
+        log.debug("Request to get all SpaceShips");
+        return spaceShipRepository
+            .findAllByMission(id)
+            .stream()
+            .map(spaceShipMapper::toDto)
+            .collect(Collectors.toCollection(LinkedList::new));
+    }
 }

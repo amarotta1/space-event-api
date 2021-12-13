@@ -25,4 +25,7 @@ public interface SpaceShipRepository extends JpaRepository<SpaceShip, Long> {
 
     @Query("select spaceShip from SpaceShip spaceShip left join fetch spaceShip.missions where spaceShip.id =:id")
     Optional<SpaceShip> findOneWithEagerRelationships(@Param("id") Long id);
+
+    @Query("select spaceShip from SpaceShip spaceShip left join spaceShip.missions mission where mission.id =:id")
+    List<SpaceShip> findAllByMission(@Param("id") Long id);
 }

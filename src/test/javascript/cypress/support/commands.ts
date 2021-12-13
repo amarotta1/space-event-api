@@ -95,10 +95,26 @@ Cypress.Commands.add('login', (username: string, password: string) => {
   cy.get(submitLoginSelector).click();
 });
 
+Cypress.Commands.add('loginAPI', () => {
+  var userData = { username: 'admin', password: 'admin', rememberMe: true };
+  cy.request({
+    method: 'POST',
+    url: 'http://localhost:8081/api/authenticate',
+    body: JSON.stringify(userData),
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+  }).then(resp => {
+    window.sessionStorage.setItem('jhi-authenticationToken', resp.body.id_token);
+  });
+});
+
 declare global {
   namespace Cypress {
     interface Chainable {
       login(username: string, password: string): Cypress.Chainable;
+      loginAPI(): Cypress.Chainable;
       authenticatedRequest(data: any): Cypress.Chainable;
     }
   }

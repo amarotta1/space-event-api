@@ -96,4 +96,15 @@ public class SpaceEventService {
         log.debug("Request to delete SpaceEvent : {}", id);
         spaceEventRepository.deleteById(id);
     }
+
+    //-------------------------------------------------------------
+
+    /**
+     * get all SpaceEvent of SpaceShip by id
+     * @return list of SpaceEvent
+     */
+    public Optional<SpaceEventDTO> findByMission(Long id) {
+        log.debug("Request to get SpaceEvent by Mission : {}", id);
+        return spaceEventRepository.findByMission(id).map(spaceEventMapper::toDto);
+    }
 }
