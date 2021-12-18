@@ -2,7 +2,7 @@
 version: '3.8'
 services:
   space-app:
-    image: space
+    image: amarotta/spaceapi
     environment:
       - _JAVA_OPTIONS=-Xmx512m -Xms256m
       - SPRING_PROFILES_ACTIVE=prod,api-docs
@@ -76,7 +76,7 @@ services:
     networks:
       - elkf-netwok
     volumes:
-      - C:/Users/amaro/Documents/Ing Software Aplicada/TrabajoFinal/filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro
+      - C:\Users\amaro\Documents\Ing Software Aplicada\Trabajo final\SpaceApi\filebeat.docker.yml:/usr/share/filebeat/filebeat.yml:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /var/lib/docker/containers/:/var/lib/docker/containers/:ro
     # disable strict permission checks

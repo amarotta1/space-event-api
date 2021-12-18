@@ -15,9 +15,9 @@
 
 logging:
   level:
-    ROOT: INFO
-    tech.jhipster: INFO
-    ar.edu.um.isa.space: INFO
+    ROOT: DEBUG
+    tech.jhipster: DEBUG
+    ar.edu.um.isa.space: DEBUG
 
 eureka:
   instance:

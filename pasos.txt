@@ -1,0 +1,16 @@
+1. Deploy en Docker 
+./mvnw package -Pprod jib:dockerBuild -DskipTests
+cd src\main\docker 
+docker-compose -f app.yml up
+docker-compose -f app.yml start space-app
+
+wsl -d docker-desktop
+wsl --shutdown   
+ionic serve
+ionic build --prod 
+serve -s build      
+./mvnw -Dtest=MissionMapperTest test         
+docker container run -d --name jenkins -p 8090:8080 -p 50000:50000 jenkins/jenkins
+docker exec -it jenkins bash
+max virtual memory areas vm.max_map_count [65530] is too low
+sysctl -w vm.max_map_count=262144                                            
